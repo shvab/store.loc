@@ -33,8 +33,20 @@ $config = [
             ],
         ],
         'db' => $db,
+        /*'urlManager' => [
+	        'class' => 'yii\web\UrlManager',
+	        'enablePrettyUrl' => true,
+	        'showScriptName' => false,
+	        //'suffix' => '.html',
+	        'rules' => [
+		        '' => 'site/index',
+		        //'gii' => 'gii/default/index',
+		        '<action>'=>'site/<action>',
+	        ],
+        ],*/
     ],
     'params' => $params,
+
 ];
 
 if (YII_ENV_DEV) {
