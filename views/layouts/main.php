@@ -36,17 +36,30 @@ AppAsset::register($this);
 </header>
 <aside class="categories-menu" ng-repeat="category in categories">
 	<!--  <a href="{{ category.link }}" class="category">{{ category.name }}</a> -->
-	<a href="{{ category.link }}" class="category">Accessories</a>
-	<a href="{{ category.link }}" class="category">Graphics</a>
-	<a href="{{ category.link }}" class="category">Internet</a>
-	<a href="{{ category.link }}" class="category">Office</a>
-	<a href="{{ category.link }}" class="category">Programming</a>
-	<a href="{{ category.link }}" class="category">Sound & Video</a>
-	<a href="{{ category.link }}" class="category">System Tools</a>
-	<a href="{{ category.link }}" class="category has-children">Games</a>
-	<a href="{{ category.link }}" class="category">OS</a>
-	<a href="{{ category.link }}" class="category">Other</a>
-	
+	<ul>
+	<li class="category"><a href="{{ category.link }}">Accessories</a></li>
+	<li class="category"><a href="{{ category.link }}">Graphics</a></li>
+	<li class="category"><a href="{{ category.link }}">Internet</a></li>
+	<li class="category"><a href="{{ category.link }}">Office</a></li>
+	<li class="category"><a href="{{ category.link }}">Programming</a></li>
+	<li class="category"><a href="{{ category.link }}">Sound & Video</a></li>
+	<li class="category"><a href="{{ category.link }}">System Tools</a></li>
+	<li class="category has-children">
+		<a href="{{ category.link }}">Games</a>
+		<div class="glyphicon glyphicon-chevron-right"></div>
+		<ul class="submenu">
+			<li class="category"><a href="{{ category.link }}">Arcade</a></li>
+			<li class="category"><a href="{{ category.link }}">Board</a></li>
+			<li class="category"><a href="{{ category.link }}">Card</a></li>
+			<li class="category"><a href="{{ category.link }}">Dice</a></li>
+			<li class="category"><a href="{{ category.link }}">Logic</a></li>
+			<li class="category"><a href="{{ category.link }}">Strategy</a></li>
+			<li class="category"><a href="{{ category.link }}">Toy</a></li>
+			<li class="category"><a href="{{ category.link }}">Other</a></li>
+		</ul>
+	<li class="category"><a href="{{ category.link }}">OS</a></li>
+	<li class="category"><a href="{{ category.link }}">Other</a></li>
+	</ul>
 </aside>
 <div class="content-wrapper">
 <?= $content ?>
