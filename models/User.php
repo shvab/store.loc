@@ -2,102 +2,88 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+use Yii;
+
+/**
+ * This is the model class for table "user".
+ *
+ * @property integer $id
+ * @property string $lastname
+ * @property string $firstname
+ * @property string $email
+ * @property string $passwd
+ * @property string $last_passwd_gen
+ * @property integer $active
+ */
+class User extends \yii\db\ActiveRecord
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'user';
+    }
+    
+ 	/*private static $users = [
+		'100' => [
+		'id' => '100',
+		'username' => 'admin',
+		'password' => 'admin',
+		'authKey' => 'test100key',
+		'accessToken' => '100-token',
+		],
+		'101' => [
+		'id' => '101',
+		'username' => 'demo',
+		'password' => 'demo',
+		'authKey' => 'test101key',
+		'accessToken' => '101-token',
+		],
+	];	*/
+ 
+	/**
+	* @inheritdoc
+	*/
+	public static function findIdentity($id){
+		return new static(self::findOne($id));
+	}
+	
+	/**
+	 * @inheritdoc
+	 * TODO: authKey cheking
+	 */
+	public function validateAuthKey($authKey){
+		return true;
+		//return $this->authKey === $authKey;
+	}
 
     /**
      * @inheritdoc
      */
-    public static function findIdentity($id)
+    public function rules()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentityByAccessToken($token)
-    {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param  string      $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return [
+            [['lastname', 'firstname', 'email', 'passwd', 'last_passwd_gen', 'active'], 'required'],
+            [['last_passwd_gen'], 'safe'],
+            [['active'], 'integer'],
+            [['lastname', 'firstname', 'email', 'passwd'], 'string', 'max' => 255]
+        ];
     }
 
     /**
      * @inheritdoc
      */
-    public function getId()
+    public function attributeLabels()
     {
-        return $this->id;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param  string  $password password to validate
-     * @return boolean if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
+        return [
+            'id' => 'ID',
+            'lastname' => 'Lastname',
+            'firstname' => 'Firstname',
+            'email' => 'Email',
+            'passwd' => 'Passwd',
+            'last_passwd_gen' => 'Last Passwd Gen',
+            'active' => 'Active',
+        ];
     }
 }

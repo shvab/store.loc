@@ -11,7 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    public function behaviors()
+    /*public function behaviors()
     {
         return [
             'access' => [
@@ -45,7 +45,7 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
-    }
+    }*/
 
     public function actionIndex()
     {

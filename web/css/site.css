@@ -1,91 +1,186 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
 html,
 body {
 	height: 100%;
+	font-family: 'Droid Sans',Helvetica,Arial,Verdana,sans-serif;
+	min-width: 986px;
 }
-
-.wrap {
-	min-height: 100%;
-	height: auto;
-	margin: 0 auto -60px;
-	padding: 0 0 60px;
+/* header */
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	width: 100%;
+	z-index: 2;
 }
-
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
-.footer {
-	height: 60px;
-	background-color: #f5f5f5;
-	border-top: 1px solid #ddd;
-	padding-top: 20px;
-}
-
-.jumbotron {
-	text-align: center;
-	background-color: transparent;
-}
-
-.jumbotron .btn {
-	font-size: 21px;
-	padding: 14px 24px;
-}
-
-.not-set {
-	color: #c55;
-	font-style: italic;
-}
-
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
+header>div{
+	float: left;
 	position: relative;
-	top: 1px;
-	display: inline-block;
-	font-family: 'Glyphicons Halflings';
-	font-style: normal;
-	font-weight: normal;
-	line-height: 1;
-	padding-left: 5px;
 }
-
-a.asc:after {
-	content: /*"\e113"*/ "\e151";
+.logo{
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 18px;
+	width: 200px;
+	margin: 15px 0;
 }
-
-a.desc:after {
-	content: /*"\e114"*/ "\e152";
-}
-
-.sort-numerical a.asc:after {
-	content: "\e153";
-}
-
-.sort-numerical a.desc:after {
-	content: "\e154";
-}
-
-.sort-ordinal a.asc:after {
-	content: "\e155";
-}
-
-.sort-ordinal a.desc:after {
-	content: "\e156";
-}
-
-.grid-view th {
-    white-space: nowrap;
-}
-
-.hint-block {
+.logo-text{
 	display: block;
-	margin-top: 5px;
-	color: #999;
+	margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.search>input{
+	margin: 14px 0 8px;
+	width: 150px;
+	position: relative;
+}
+.search>button{
+	margin: -1px 0 0 -5px;
+	height: 25px;
+	padding: 3px 12px;
+}
+.action-bar{
+	float: right;
+}
+.action-bar>button{
+	margin: 10px 0;
 }
 
-.error-summary {
-	color: #a94442;
-	background: #fdf7f7;
-	border-left: 3px solid #eed3d7;
-	padding: 10px 20px;
-	margin: 0 0 15px 0;
+/* categories-menu */ 
+.categories-menu{
+	position: fixed;
+	top: 55px;
+	left: 0;
+	z-index: 2;
+}
+.categories-menu>a{
+	display: block;
+	min-width: 200px;
+	color: rgb(85, 85, 85);
+	font-size: 18px;
+	background-color: #fff;
+	padding: 10px 0 10px 28px;
+}
+.categories-menu>a:hover{
+	background-color: #F0AD4E;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* content */
+.content-wrapper{
+	margin: 52px 0 0 200px;
+	padding: 10px 0 10px 10px;
+	background-color: #eee;
+}
+
+/* product */
+.product-wrapper{
+	background-color: #fff;
+	width: 220px;
+	margin: 5px;
+	position: relative;
+	float: left;
+}
+.product{
+	display: block;
+	min-height: 290px;
+}
+.product:hover{
+	text-decoration: none;
+}
+.product-image{
+	height: 220px;
+	width: 220px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.product > .product-image-hover{
+	position: absolute;
+	height: 220px;
+	width: 220px;
+	top: 220px;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	background-image: url("/img/product_image_hover.png");
+	-webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s;
+}
+.product .product-publisher{
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	font-size: 18px;
+	color: white;
+}
+.product:hover > .product-image-hover{
+	opacity: 1;
+	text-decoration: none;
+}
+.product > .product-name{
+	font-size: 18px;
+	color: #555;
+	font-weight: bold;
+	margin: 0 10px;
+}
+.product > .product-stars-wrapper{
+	margin: 0 10px;
+}
+.product > .product-stars-wrapper > .product-stars{
+	background-image: url("/img/stars.png");
+	background-repeat: no-repeat;
+	height: 20px;
+}
+.product-stars-0{ width: 1px;}
+.product-stars-1{ width: 10%;}
+.product-stars-2{ width: 20%;}
+.product-stars-3{ width: 30%;}
+.product-stars-4{ width: 40%;}
+.product-stars-5{ width: 50%;}
+.product-stars-6{ width: 60%;}
+.product-stars-7{ width: 70%;}
+.product-stars-8{ width: 80%;}
+.product-stars-9{ width: 90%;}
+.product-stars-10{ width: 100%;}
+.product > .product-price{
+	font-size: 18px;
+	color: #555;
+	font-style: italic;
+	margin: 0 10px;
+}
+
+/* footer */
+footer{
+	font-size: 18px;
+}
+footer > a {
+	display: block;
+	font-family: Arial;
+	padding: 10px 28px;
+	background-color: #428BCA;
+	color: white;
+}
+footer > a > .author {
+	color: #428BCA;
+	font-weight: bold;
+	color: white;
+}
+footer > a:hover , footer > a:hover > .author {
+	background-color: #F0AD4E;
+	text-decoration: none;
+	color: white;
+}
+
+@media(min-width:768px){
+	.action-bar>button{
+		margin: 10px 10px;
+	}
+}
+@media(min-width:992px){
+	.search>input{
+		width: 330px;
+	}
 }

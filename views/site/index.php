@@ -2,52 +2,128 @@
 /**
  * @var yii\web\View $this
  */
-$this->title = 'My Yii Application';
+$this->title = 'CentStore';
 ?>
-<div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
+<section class="recomended-products clearfix">
+	<h2>Recomended</h2>
+	<div class="product-wrapper" ng-repeat="product in recomended">
+<!-- 		<a href="{{ product.link }}" class="product">
+			<div class="product-image-hover">
+				<div class="product-publisher">{{ product.publisher }}</div>
+			</div>
+			<div class="product-image" style="background-image: {{ product.titleImage }};"></div>
+			<div class="product-name">{{ product.name }}</div>
+			<div class="product-stars {{ product.stars }}" ></div>
+			<div class="product-price">{{ product.price }}</div>
+		</a> -->
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+	<div class="product-wrapper" ng-repeat="product in new">
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+	<div class="product-wrapper" ng-repeat="product in new">
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+	<div class="product-wrapper" ng-repeat="product in new">
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+	<div class="product-wrapper" ng-repeat="product in new">
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+	<div class="product-wrapper" ng-repeat="product in new">
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+</section>
+<section class="new-products clearfix">
+	<h2>New</h2>
+	<div class="product-wrapper" ng-repeat="product in new">
+<!--		<a href="{{ product.link }}" class="product">
+			<div class="product-image-hover"></div>
+			<div class="product-image" style="background-image: {{ product.titleImage }};"></div>
+			<div class="product-name">{{ product.name }}</div>
+			<div class="product-stars {{ product.stars }}" ></div>
+			<div class="product-price">{{ product.price }}</div>
+			<div class="product-publisher">{{ product.publisher }}</div>
+		</a> -->
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+		
+	</div>
+</section>
+<section class="clearfix" ng-repeat="category in categories">
+	<h2>{{ category.name }}</h2>
+	<div class="product-wrapper" ng-repeat="product in category.products">
+<!--		<a href="{{ product.link }}" class="product">
+			<div class="product-image-hover"></div>
+			<div class="product-image" style="background-image: /img/{{ product.titleImage }};"></div>
+			<div class="product-name">{{ product.name }}</div>
+			<div class="product-stars {{ product.stars }}" ></div>
+			<div class="product-price">{{ product.price }}</div>
+			<div class="product-publisher">{{ product.publisher }}</div>
+		</a> -->
+		<a href="{{ product.link }}" class="product">
+			<div class="product-image" style="background-image:url('/img/none.png');"></div>
+			<div class="product-image-hover">
+				<div class="product-publisher">Shvab Ostap</div>
+			</div>
+			<div class="product-name">Screener</div>
+			<div class="product-stars-wrapper"><div class="product-stars product-stars-10"></div></div>
+			<div class="product-price">Price: Free</div>
+		</a>
+	</div>
+</section>
