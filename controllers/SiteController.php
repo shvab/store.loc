@@ -49,6 +49,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+    	Yii::$app->view->registerJsFile('js/home.js');
+    	Yii::$app->view->title = 'CentStore';
         return $this->render('index');
     }
 

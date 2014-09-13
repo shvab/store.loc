@@ -10,14 +10,14 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" ang-app="">
+<html lang="<?= Yii::$app->language ?>" ng-app="app">
 <head>
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body ng-controller="mainController">
+<body>
 <?php $this->beginBody() ?>
 <header class="clearfix">
 	<div class="logo"><span class="logo-text">CentStore</span></div>
@@ -34,34 +34,18 @@ AppAsset::register($this);
 		<button class="btn btn-default">Logout</button>
 	</div>
 </header>
-<aside class="categories-menu" ng-repeat="category in categories">
-	<!--  <a href="{{ category.link }}" class="category">{{ category.name }}</a> -->
+<aside class="categories-menu" ng-controller="CategoriesController">
 	<ul>
-	<li class="category"><a href="{{ category.link }}">Accessories</a></li>
-	<li class="category"><a href="{{ category.link }}">Graphics</a></li>
-	<li class="category"><a href="{{ category.link }}">Internet</a></li>
-	<li class="category"><a href="{{ category.link }}">Office</a></li>
-	<li class="category"><a href="{{ category.link }}">Programming</a></li>
-	<li class="category"><a href="{{ category.link }}">Sound & Video</a></li>
-	<li class="category"><a href="{{ category.link }}">System Tools</a></li>
-	<li class="category has-children">
-		<a href="{{ category.link }}">Games</a>
-		<div class="glyphicon glyphicon-chevron-right"></div>
-		<ul class="submenu">
-			<li class="category"><a href="{{ category.link }}">Arcade</a></li>
-			<li class="category"><a href="{{ category.link }}">Board</a></li>
-			<li class="category"><a href="{{ category.link }}">Card</a></li>
-			<li class="category"><a href="{{ category.link }}">Dice</a></li>
-			<li class="category"><a href="{{ category.link }}">Logic</a></li>
-			<li class="category"><a href="{{ category.link }}">Strategy</a></li>
-			<li class="category"><a href="{{ category.link }}">Toy</a></li>
-			<li class="category"><a href="{{ category.link }}">Other</a></li>
+	<li class="category" ng-repeat="category in categories" ng-class="{'has-children' : category.hasChildren}" >
+		<a href="/category/{{ category.id }}">{{ category.name }}</a>
+		<div class="glyphicon glyphicon-chevron-right" ng-if="category.hasChildren"></div>
+		<ul class="submenu" ng-if="category.hasChildren">
+			<li class="category" ng-repeat="cat in category.children"><a href="/category/{{ cat.id }}">{{ cat.name }}</a></li>
 		</ul>
-	<li class="category"><a href="{{ category.link }}">OS</a></li>
-	<li class="category"><a href="{{ category.link }}">Other</a></li>
+	</li>
 	</ul>
 </aside>
-<div class="content-wrapper">
+<div class="content-wrapper" ng-controller="ContentController">
 <?= $content ?>
 </div>
 <footer>

@@ -2,11 +2,18 @@
 
 use yii\db\Schema;
 
-class m140910_074454_create extends \yii\db\Migration
+class m140913_105227_del_tables extends \yii\db\Migration
 {
     public function up()
     {
-    	$this->createTable('category', [
+    	$this->dropTable('os');
+    	$this->dropTable('os_bit');
+    	
+    }
+
+    public function down()
+    {
+        /*$this->createTable('category', [
     			'id' => Schema::TYPE_PK,
     			'id_parent' => Schema::TYPE_INTEGER . ' NOT NULL',
     			'name' => Schema::TYPE_STRING . ' NOT NULL',
@@ -147,55 +154,7 @@ class m140910_074454_create extends \yii\db\Migration
     			'name' => 'Office',
     			'active' => 1,
     			'position' => 10,
-    			]);
-    	
-    	
-    	
-    	$this->createTable('product', [
-    			'id' => Schema::TYPE_PK,
-    			'id_category' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'name' => Schema::TYPE_STRING . ' NOT NULL',
-    			'home_link' => Schema::TYPE_STRING,
-    			'report_link' => Schema::TYPE_STRING . ' NOT NULL',
-    			'requirements' => Schema::TYPE_TEXT,
-    			'short_description' => Schema::TYPE_STRING,
-    			'description' => Schema::TYPE_TEXT,
-    			'installation' => Schema::TYPE_TEXT,
-    			'stars' => Schema::TYPE_SMALLINT,
-    			'price'  => Schema::TYPE_FLOAT,
-    			'author' => Schema::TYPE_STRING . ' NOT NULL',
-    			'id_publisher' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'active' => Schema::TYPE_SMALLINT . ' NOT NULL',
-    			'date_add' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
-    			'date_upd' => Schema::TYPE_TIMESTAMP,
-    			'position' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			]);
-    	
-    	$this->createTable('product_report', [
-    			'id' => Schema::TYPE_PK,
-    			'type' => Schema::TYPE_STRING . ' NOT NULL',
-    			'id_product' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'content' => Schema::TYPE_TEXT,
-    			'date_add' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
-    			'date_read' => 'TIMESTAMP NULL DEFAULT NULL',
-    			'date_solve' => 'TIMESTAMP NULL DEFAULT NULL',
-    			]);
-    	
-    	$this->createTable('product_rating', [
-    			'id' => Schema::TYPE_PK,
-    			'id_product' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'id_user' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'like' => Schema::TYPE_SMALLINT,
-    			'unlike' => Schema::TYPE_SMALLINT,
-    			]);
-    	
-    	$this->createTable('product_os', [
-    			'id' => Schema::TYPE_PK,
-    			'id_product' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'id_os' =>Schema::TYPE_INTEGER . ' NOT NULL',
-    			'os_version' => Schema::TYPE_STRING,
-    			'id_os_bit' =>Schema::TYPE_INTEGER . ' NOT NULL',
-    			]);
+    			]);*/
     	
     	$this->createTable('os', [
     			'id' => Schema::TYPE_PK,
@@ -205,53 +164,12 @@ class m140910_074454_create extends \yii\db\Migration
     	$this->insert('os', ['id' => 2, 'name' => 'CentOS']);
     	$this->insert('os', ['id' => 3, 'name' => 'RHEL']);
     	$this->insert('os', ['id' => 4, 'name' => 'Fedora']);
-    	
+    	 
     	$this->createTable('os_bit', [
     			'id' => Schema::TYPE_PK,
     			'name' => Schema::TYPE_STRING . ' NOT NULL',
     			]);
-    	$this->insert('os_bit', ['id' => 1, 'name' => '32 & 64']);
-    	$this->insert('os_bit', ['id' => 2, 'name' => '32']);
-    	$this->insert('os_bit', ['id' => 3, 'name' => '64']);
-    	
-    	$this->createTable('product_tag', [
-    			'id' => Schema::TYPE_PK,
-    			'id_product' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'tag' => Schema::TYPE_STRING . ' NOT NULL',
-    			]);
-    	
-    	$this->createTable('product_comment', [
-    			'id' => Schema::TYPE_PK,
-    			'id_product' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'content' => Schema::TYPE_TEXT . ' NOT NULL',
-    			'publisher' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'active' => Schema::TYPE_SMALLINT . ' NOT NULL',
-    			'date_add' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
-    			'date_upd' => Schema::TYPE_TIMESTAMP,
-    			'position' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			]);
-    	
-    	$this->createTable('product_comment_rating', [
-    			'id' => Schema::TYPE_PK,
-    			'id_product_comment' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'id_user' => Schema::TYPE_INTEGER . ' NOT NULL',
-    			'like' => Schema::TYPE_SMALLINT,
-    			'unlike' => Schema::TYPE_SMALLINT,
-    			]);
-    	
-    }
 
-    public function down()
-    {
-    	$this->dropTable('category');
-		$this->dropTable('product');
-		$this->dropTable('product_report');
-		$this->dropTable('product_rating');
-		$this->dropTable('product_os');
-		$this->dropTable('os');
-		$this->dropTable('os_bit');
-		$this->dropTable('product_tag');
-		$this->dropTable('product_comment');
-		return $this->dropTable('product_comment_rating');
+        return false;
     }
 }
