@@ -20,7 +20,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <header class="clearfix">
-	<div class="logo"><span class="logo-text">CentStore</span></div>
+	<div class="logo"><span class="logo-text">BoycottStore</span></div>
 	<div class="search">
 		<input type="text" ng-model="search">
 		<button class="btn btn-success" ng-disabled="incomplete">
