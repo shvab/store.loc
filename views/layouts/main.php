@@ -49,7 +49,7 @@ AppAsset::register($this);
 <?= $content ?>
 </div>
 <footer>
-	<a href="#">Created by <span class="author">Shvab Ostap</span></a>
+	<a href="ua.linkedin.com/pub/ostap-shvab/41/553/3a5/">Created by <span class="author">Shvab Ostap</span></a>
 </footer>
 
 <?php $this->endBody() ?>

@@ -137,7 +137,7 @@ header>div{
 	-webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
     transition: opacity 2s;
 }
-.product .product-publisher{
+.product .product-author{
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
