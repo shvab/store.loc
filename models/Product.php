@@ -39,22 +39,42 @@ class Product extends \yii\db\ActiveRecord
     
     public function getHomeProducts(){
     	$countPerPage = 6;
-    	$recomended = $this->find()->where(['active' => '1'])->limit($countPerPage)->orderBy(['stars' => SORT_DESC])->asArray()->all();
-    	$new = $this->find()->where(['active' => '1'])->limit($countPerPage)->orderBy(['date_add' => SORT_DESC])->asArray()->all();
+    	$recomended = $this->checkImage($this->find()->where(['active' => '1'])->limit($countPerPage)->orderBy(['stars' => SORT_DESC])->asArray()->all());
+    	$new = $this->checkImage($this->find()->where(['active' => '1'])->limit($countPerPage)->orderBy(['date_add' => SORT_DESC])->asArray()->all());
     	$categories = [];
     	foreach(Yii::$app->params['categories'] as $category){
     		$name = $category['name'];
     		if(!$category['hasChildren']){
-    			$categories[$name] = $this->find()->where(['id' => $category['id']])->limit($countPerPage)->orderBy(['stars' => SORT_DESC])->asArray()->all();
+    			$categories[$name] = $this->checkImage($this->find()->where(['id' => $category['id']])->limit($countPerPage)->orderBy(['stars' => SORT_DESC])->asArray()->all());
     		} else {
     			$arr = [];
     			foreach($category['children'] as $category){
     				$arr[] = $category['id'];
     			}
-    			$categories[$name] = $this->find()->where(['id' => $arr])->limit($countPerPage)->orderBy(['stars' => SORT_DESC])->asArray()->all();
+    			$categories[$name] = $this->checkImage($this->find()->where(['id' => $arr])->limit($countPerPage)->orderBy(['stars' => SORT_DESC])->asArray()->all());
     		}
     	}
     	return ['recomended' => $recomended, 'new' => $new, 'categories' => $categories];
+    }
+    
+    
+    /**
+     * add link to image
+     * TODO: complitr method
+     * @param array $products
+     * @return array
+     */
+    private function checkImage($products){
+    	/*print_r($products);
+    	exit;
+    	foreach($products as $key => $product){
+    		if(file_exists(__DIR__ . '/../web/img/users/'.$product['id_google_plus'].'/'.$product['id'].'_220.jpg')){
+    			$products[$key][image] = '/img/users/'.$product['id_google_plus'].'/'.$product['id'].'_220.jpg'
+    		}else{
+    			$products[$key][image] = false;
+    		}
+    	}*/
+    	return $products;
     }
 
     /**

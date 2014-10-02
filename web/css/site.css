@@ -42,8 +42,9 @@ header>div{
 }
 .action-bar{
 	float: right;
+	padding: 10px 0;
 }
-.action-bar>button{
+.action-bar>.btn{
 	margin: 10px 0;
 }
 
@@ -53,6 +54,8 @@ header>div{
 	top: 55px;
 	left: 0;
 	z-index: 5;
+	background-color: #fff;
+	width: 100%;
 }
 .categories-menu ul{
 	margin: 0;
@@ -66,28 +69,30 @@ header>div{
 	height: 24px;
 	width: 24px;
 	top: 16px;
-	right: 11px;
+	right: -7px;
 }
 .categories-menu .submenu{
 	display: none;
 	position: fixed;
-	left: 200px;
+	left: 137px;
 	z-index: 4;
-	top: 55px;
+	top: 100px;
 }
 .categories-menu .category{
 	display: block;
 }
+.categories-menu>ul>.category{
+	float: left;
+}
 .categories-menu a{
 	display: block;
-	min-width: 200px;
 	color: rgb(85, 85, 85);
 	font-size: 18px;
 	background-color: #fff;
-	padding: 10px 0 10px 28px;
+	padding: 10px 22px 10px 22px;
 }
 .categories-menu a:hover{
-	background-color: #F0AD4E;
+	background-color: #428BCA;
 	color: #fff;
 	text-decoration: none;
 }
@@ -97,8 +102,7 @@ header>div{
 
 /* content */
 .content-wrapper{
-	margin: 55px 0 0 200px;
-	padding: 10px 0 10px 10px;
+	padding: 155px 0 10px 10px;
 	background-color: #eee;
 }
 
@@ -202,13 +206,44 @@ footer > a:hover , footer > a:hover > .author {
 	color: white;
 }
 
+/* login */
+
+.site-login{
+	padding: 20px 0 20px 100px;
+}
+.site-login .form-control{
+	width: 200px;
+}
+
+
+/* user registration */
+
+.site-registration{
+	padding: 20px 0 20px 100px;
+}
+.site-registration .form-control{
+	width: 200px;
+}
+
+.site-registration #registrationform-gmail{
+	display: inline;
+}
+
 @media(min-width:768px){
-	.action-bar>button{
-		margin: 10px 10px;
+	.action-bar>.btn{
+		margin: 0 10px;
 	}
 }
 @media(min-width:992px){
 	.search>input{
 		width: 330px;
+	}
+	.categories-menu a{
+		padding: 10px 22px 10px 22px;
+	}
+}
+@media(min-width:1200px){
+	.content-wrapper{
+		padding: 110px 0 10px 10px;
 	}
 }

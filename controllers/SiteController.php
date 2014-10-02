@@ -8,11 +8,17 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\RegistrationForm;
 
 class SiteController extends Controller
 {
-    /*public function behaviors()
+	
+	/**
+	 * TODO: verbs uncomment
+	 */
+    public function behaviors()
     {
+    	
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -27,9 +33,9 @@ class SiteController extends Controller
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
-                'actions' => [
+                /*'actions' => [
                     'logout' => ['post'],
-                ],
+                ],*/
             ],
         ];
     }
@@ -45,13 +51,14 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
-    }*/
+    }
 
     public function actionIndex()
     {
     	Yii::$app->view->registerJsFile('js/home.js');
-    	Yii::$app->view->title = 'CentStore';
-        return $this->render('index');
+    	Yii::$app->view->title = '';
+        return $this->render('index',
+        		['categories' => Yii::$app->params['categories']]);
     }
 
     public function actionLogin()
@@ -64,6 +71,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+        	Yii::$app->view->title = '- Login';
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -76,6 +84,34 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+    
+	public function actionRegistration()
+	{
+	    $model = new RegistrationForm;
+	
+	    if ($model->load(Yii::$app->request->post()) && $model->send()) {
+	    	return $this->goHome();
+	    }
+	    
+	    Yii::$app->view->registerJsFile('js/registration.js');
+	    Yii::$app->view->title = '- Registration';
+	
+	    return $this->render('registration', [
+	        'model' => $model,
+	    ]);
+	}
+	
+	public function actionTerms()
+	{
+		Yii::$app->view->title = '- Terms of Use';
+		return $this->render('termsOfUse');
+	}
+	
+	public function actionPolicy()
+	{
+		Yii::$app->view->title = '- Private Policy';
+		return $this->render('privacyPolicy');
+	}
 
     public function actionContact()
     {

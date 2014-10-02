@@ -33,7 +33,9 @@ return [
 	['id' => 1, 'name' => '32 & 64'],
 	['id' => 2, 'name' => '32'],
 	['id' => 3, 'name' => '64'],
-	]
+	],
+	'user' => ['passwordResetTokenExpire'=> 86400],
+	'noReplayEmail'=> 'noreplay@store.loc',
 ];
 
 
